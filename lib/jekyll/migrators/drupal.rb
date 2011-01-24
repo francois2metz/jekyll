@@ -23,8 +23,8 @@ module Jekyll
       WHERE (n.type = 'blog' OR n.type = 'story')
       GROUP BY n.nid"
 
-    def self.process(dbname, user, pass, host = 'localhost')
-      db = Sequel.mysql(dbname, :user => user, :password => pass, :host => host, :encoding => 'utf8')
+    def self.process(dbname, user, pass, host = 'localhost', port = 3306)
+      db = Sequel.mysql(dbname, :user => user, :password => pass, :host => host, :port => port, :encoding => 'utf8')
 
       FileUtils.mkdir_p "_posts"
       FileUtils.mkdir_p "_drafts"
